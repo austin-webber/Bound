@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Wall
+  - PlayerBottom
+  - JumpCharge
+  - Collectible
   layers:
   - Default
   - TransparentFX
@@ -14,8 +18,8 @@ TagManager:
   - UI
   - Player
   - Ground
-  - 
-  - 
+  - Wall
+  - Background
   - 
   - 
   - 
@@ -39,6 +43,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: SkyBackground
+    uniqueID: 2545218949
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: New Layer 2
+    uniqueID: 569767125
     locked: 0
