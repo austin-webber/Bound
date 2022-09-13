@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
             playerRb.drag = 0.05f;
         }
 
-        if (playerRb.velocity.y < 0) // 0.001
+        if (playerRb.velocity.y < 0)
         {
             animator.SetBool("isJumpingUp", false);
             animator.SetBool("isFalling", true);
@@ -84,9 +84,12 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            animator.SetBool("grounded", true);
-            animator.SetBool("isJumpingUp", false);
-            animator.SetBool("isFalling", false);
+            if (!hanging & !clawsOut)
+            {
+                animator.SetBool("grounded", true);
+                animator.SetBool("isJumpingUp", false);
+                animator.SetBool("isFalling", false);
+            }
         }
 
         CheckForInputs();
@@ -143,8 +146,11 @@ public class PlayerController : MonoBehaviour
                 audioSource.PlayOneShot(wallGrabSound);
                 grabSoundPlayed = true;
             }
-            hanging = true;
-            animator.SetBool("hanging", true);
+            if (staminaBarSlider.GetComponent<Image>().fillAmount >= 0)
+            {
+                hanging = true;
+                animator.SetBool("hanging", true);
+            }
         }
 
         if (collision.transform.CompareTag("Ground"))
